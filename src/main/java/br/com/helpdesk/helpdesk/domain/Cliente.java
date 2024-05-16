@@ -3,6 +3,8 @@ package br.com.helpdesk.helpdesk.domain;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import br.com.helpdesk.helpdesk.domain.enums.Perfil;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
@@ -16,6 +18,7 @@ public class Cliente extends Pessoa{
 	
 	private static final long serialVersionUID = 1L;
 	
+	@JsonBackReference
 	@OneToMany(mappedBy = "cliente")
 	private List<Chamado> chamados = new ArrayList<>();
 	
