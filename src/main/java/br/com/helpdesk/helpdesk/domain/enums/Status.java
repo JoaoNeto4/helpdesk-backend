@@ -7,7 +7,7 @@ import lombok.Getter;
 @Getter
 public enum Status {
 	
-	ADMIN(0, "ROLE_ADMIN"), CLIENTE(1, "ROLE_CLIENTE"), TECNICO(0, "ROLE_TECNICO");
+	ABERTO(0, "ROLE_ABERTO"), ANDAMENTO(1, "ROLE_ANDAMENTO"), ENCERRADO(0, "ROLE_ENCERRADO");
 	
 	private Integer codigo;
 	
