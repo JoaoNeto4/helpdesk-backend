@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import br.com.helpdesk.helpdesk.domain.Tecnico;
 import br.com.helpdesk.helpdesk.domain.enums.Perfil;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -24,9 +25,17 @@ public class TecnicoDTO implements Serializable{
 	
 
 	protected Integer id;
+	
+	@NotNull(message = "Campo Nome é requirido!")
 	protected String nome;
+	
+	@NotNull(message = "Campo CPF é requirido!")
 	protected String cpf;
+	
+	@NotNull(message = "Campo Email é requirido!")
 	protected String email;
+	
+	@NotNull(message = "Campo Senha é requirido!")
 	protected String senha;
 	protected Set<Integer> perfis = new HashSet<>();
 	

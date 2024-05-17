@@ -17,6 +17,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import br.com.helpdesk.helpdesk.domain.Tecnico;
 import br.com.helpdesk.helpdesk.dto.TecnicoDTO;
 import br.com.helpdesk.helpdesk.services.TecnicoService;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/tecnicos")
@@ -42,7 +43,7 @@ public class TecnicoResource {
 	}
 	
 	@PostMapping
-	public ResponseEntity<TecnicoDTO> create(@RequestBody TecnicoDTO objDTO){
+	public ResponseEntity<TecnicoDTO> create(@Valid @RequestBody TecnicoDTO objDTO){
 		Tecnico newObj = service.create(objDTO);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(newObj.getId()).toUri();
 		return ResponseEntity.created(uri).build();
