@@ -12,10 +12,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import br.com.helpdesk.helpdesk.domain.Tecnico;
 import br.com.helpdesk.helpdesk.domain.enums.Perfil;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@NoArgsConstructor
 @Getter
 @Setter
 public class TecnicoDTO implements Serializable{
@@ -34,6 +32,12 @@ public class TecnicoDTO implements Serializable{
 	
 	@JsonFormat(pattern = "dd/MM/yyyy")
 	protected LocalDate dataCriacao = LocalDate.now();
+	
+	
+	public TecnicoDTO() {
+		super();
+		addPerfil(Perfil.CLIENTE);
+	}
 
 	
 	public TecnicoDTO(Tecnico obj) {
@@ -47,6 +51,8 @@ public class TecnicoDTO implements Serializable{
 					.stream().map(x -> x.getCodigo()).
 					collect(Collectors.toSet());
 		this.dataCriacao = obj.getDataCriacao();
+		
+		addPerfil(Perfil.CLIENTE);
 
 	}
 	
@@ -58,5 +64,7 @@ public class TecnicoDTO implements Serializable{
 	public void addPerfil(Perfil perfil) {
 		this.perfis.add(perfil.getCodigo());
 	}
+
+
 
 }
