@@ -6,6 +6,7 @@ import java.time.LocalDate;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import br.com.helpdesk.helpdesk.domain.Chamado;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -23,11 +24,23 @@ public class ChamadoDTO implements Serializable{
 	@JsonFormat(pattern = "dd/MM/yyyy")
 	private LocalDate dataAbertura = LocalDate.now();
 	private LocalDate dataFechamento;
+	
+	@NotNull(message = "Campo Prioridade é requerido")
 	private Integer prioridade;
+	
+	@NotNull(message = "Campo Status é requerido")
 	private Integer status;
+	
+	@NotNull(message = "Campo Título é requerido")
 	private String titulo;
+	
+	@NotNull(message = "Campo Observações é requerido")
 	private String observacoes;
+	
+	@NotNull(message = "Campo Técnico é requerido")
 	private Integer tecnico;
+	
+	@NotNull(message = "Campo Cliente é requerido")
 	private Integer cliente;
 	private String nomeTecnico;
 	private String nomeCliente;
