@@ -4,6 +4,8 @@ import java.net.URI;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -19,7 +21,6 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import br.com.helpdesk.helpdesk.domain.Cliente;
 import br.com.helpdesk.helpdesk.dto.ClienteDTO;
 import br.com.helpdesk.helpdesk.services.ClienteService;
-import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/clientes")
@@ -53,7 +54,7 @@ public class ClienteResource {
 
 	@PutMapping("/{id}")
 	public ResponseEntity<ClienteDTO> update(@PathVariable Integer id, @Valid @RequestBody ClienteDTO objDTO){
-		Cliente obj = service.upddate(id, objDTO);
+		Cliente obj = service.update(id, objDTO);
 		return ResponseEntity.ok().body(new ClienteDTO(obj));
 	}
 	
